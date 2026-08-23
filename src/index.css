@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-paper text-ink900 dark:bg-ink dark:text-[#EAEFF7] font-body antialiased transition-colors duration-300;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+  ::selection {
+    @apply bg-signal-amber/30;
+  }
+  :focus-visible {
+    outline: 2px solid #5B8DEF;
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply max-w-5xl mx-auto px-6 sm:px-8;
+  }
+  .eyebrow {
+    @apply font-mono text-xs tracking-[0.2em] uppercase text-signal-blue dark:text-signal-amber;
+  }
+  .section-title {
+    @apply text-3xl sm:text-4xl font-semibold tracking-tight;
+  }
+  .card {
+    @apply bg-paper-panel dark:bg-ink-panel border border-paper-border dark:border-ink-border rounded-2xl;
+  }
+  .chip {
+    @apply font-mono text-[11px] uppercase tracking-wide px-2.5 py-1 rounded-md border border-paper-border dark:border-ink-border bg-paper dark:bg-ink text-mutedInk;
+  }
+  .btn-primary {
+    @apply inline-flex items-center gap-2 rounded-full bg-ink900 dark:bg-signal-amber text-paper dark:text-ink900 px-6 py-3 font-medium text-sm hover:opacity-90 transition-opacity;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 rounded-full border border-paper-border dark:border-ink-border px-6 py-3 font-medium text-sm hover:border-signal-blue dark:hover:border-signal-amber transition-colors;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
