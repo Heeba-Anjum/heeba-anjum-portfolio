@@ -17,7 +17,12 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 backdrop-blur bg-paper/80 dark:bg-ink/80 border-b border-paper-border dark:border-ink-border">
       <nav className="container-page flex items-center justify-between h-16" aria-label="Primary">
-        <a href="#hero" className="font-mono text-sm font-medium tracking-tight">
+        <a href="#hero" className="flex items-center gap-2.5 font-mono text-sm font-medium tracking-tight">
+          <img
+            src="/images/heeba-anjum.jpg"
+            alt=""
+            className="h-8 w-8 rounded-full object-cover border border-paper-border dark:border-ink-border"
+          />
           heeba<span className="text-signal-blue dark:text-signal-amber">.</span>pm
         </a>
 

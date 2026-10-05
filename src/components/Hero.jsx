@@ -2,21 +2,14 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { profile } from '../data/resumeData.js'
 
-// Signature element: a funnel visualization referencing her own
-// "Google Analytics for Job Seekers" project (applications -> responses
-// -> interviews -> offers), rendered as the hero's centerpiece.
-const funnelStages = [
-  { label: 'Applications', value: 100 },
-  { label: 'Responses', value: 70 },
-  { label: 'Interviews', value: 45 },
-  { label: 'Offers', value: 22 },
-]
-
 export default function Hero() {
   return (
     <section id="hero" className="relative overflow-hidden">
       <div className="absolute inset-0 bg-grid-light dark:bg-grid-dark [background-size:32px_32px] opacity-40 pointer-events-none" />
-      <div className="container-page relative py-24 sm:py-32 grid md:grid-cols-[1.2fr_0.8fr] gap-12 items-center">
+      <div className="absolute -top-32 -right-20 h-96 w-96 rounded-full bg-signal-blue/20 dark:bg-signal-amber/10 blur-3xl pointer-events-none" />
+      <div className="absolute top-40 -left-24 h-72 w-72 rounded-full bg-signal-green/10 blur-3xl pointer-events-none" />
+
+      <div className="container-page relative py-24 sm:py-32 grid md:grid-cols-[1.15fr_0.85fr] gap-14 items-center">
         <div>
           <motion.p
             initial={{ opacity: 0, y: 10 }}
@@ -74,39 +67,27 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Funnel signature visual */}
+        {/* Portrait */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 20, scale: 0.96 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="card p-6"
-          aria-label="Illustrative funnel referencing personal job-search analytics project"
+          className="relative mx-auto md:mx-0 w-full max-w-xs"
         >
-          <p className="eyebrow mb-4">Job-search funnel · personal project</p>
-          <div className="flex flex-col gap-3">
-            {funnelStages.map((s, i) => (
-              <div key={s.label}>
-                <div className="flex justify-between text-xs font-mono text-mutedInk mb-1">
-                  <span>{s.label}</span>
-                  <span>{s.value}%</span>
-                </div>
-                <div className="h-2.5 rounded-full bg-paper dark:bg-ink border border-paper-border dark:border-ink-border overflow-hidden">
-                  <motion.div
-                    initial={{ width: 0 }}
-                    animate={{ width: `${s.value}%` }}
-                    transition={{ duration: 0.9, delay: 0.4 + i * 0.12, ease: 'easeOut' }}
-                    className={`h-full ${
-                      i % 2 === 0 ? 'bg-signal-blue' : 'bg-signal-amber'
-                    }`}
-                  />
-                </div>
-              </div>
-            ))}
+          <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-signal-blue/30 via-signal-amber/20 to-signal-green/20 blur-2xl scale-95" />
+          <div className="relative rounded-[2rem] overflow-hidden border border-paper-border dark:border-ink-border shadow-2xl">
+            <img
+              src="/images/heeba-anjum.jpg"
+              alt="Heeba Anjum Hosur, Product Manager"
+              className="w-full h-auto object-cover aspect-[3/4]"
+              loading="eager"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-ink900/40 via-transparent to-transparent" />
           </div>
-          <p className="mt-4 text-xs text-mutedInk">
-            Modeled after her "Google Analytics for Job Seekers" project — tracking
-            applications through offers to identify the highest-converting channels.
-          </p>
+          <div className="absolute -bottom-4 -left-4 card px-4 py-2.5 shadow-lg">
+            <p className="font-mono text-[11px] text-mutedInk">Currently</p>
+            <p className="text-sm font-semibold">Junior PM @ Ultimez</p>
+          </div>
         </motion.div>
       </div>
     </section>
