@@ -21,6 +21,7 @@ export default function Experience() {
                   <p>{job.duration} · {job.location}</p>
                 </div>
               </div>
+
               <ul className="space-y-3">
                 {job.bullets.map((b, i) => (
                   <li key={i} className="flex gap-3 text-mutedInk leading-relaxed">
@@ -29,6 +30,30 @@ export default function Experience() {
                   </li>
                 ))}
               </ul>
+
+              {job.documents && job.documents.length > 0 ? (
+                <div className="mt-6 pt-5 border-t border-paper-border dark:border-ink-border">
+                  <p className="text-sm font-medium mb-1">Don't just take her word for it —</p>
+                  <p className="text-xs text-mutedInk mb-4">
+                    These documents are kept confidential; request access and it'll be granted promptly.
+                  </p>
+                  <div className="flex flex-wrap gap-3">
+                    {job.documents.map((doc) => {
+                      return (
+                        
+                          <a
+                          href={doc.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 text-sm font-medium rounded-full border border-paper-border dark:border-ink-border px-4 py-2 hover:border-signal-blue dark:hover:border-signal-amber hover:text-signal-blue dark:hover:text-signal-amber transition-colors"
+                        >
+                          {'📄 ' + doc.label}
+                        </a>
+                      )
+                    })}
+                  </div>
+                </div>
+              ) : null}
             </article>
           ))}
         </div>
